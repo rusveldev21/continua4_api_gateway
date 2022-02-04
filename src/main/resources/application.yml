@@ -1,0 +1,21 @@
+server:
+  port: 8095
+  
+  
+#uri: una de las instancias del microservicio, que va cambiando
+#filter: cuantos recurso hay(api/estudiante)
+spring:
+  application:
+    name: apgw-server
+  cloud:
+    gateway:
+      routes:
+      - id: idat-estudiante
+        uri: http://localhost:64678
+        predicates:
+        - Path=/api/estudiante/**
+  
+        #filters:
+        #- stripPrefix=2
+  #application:
+    #name: apgw-server 
